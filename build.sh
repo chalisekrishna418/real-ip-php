@@ -1,0 +1,1 @@
+docker build -t krishnachalise418/real-ip-php:0.0.1 .

@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: real-ip-php
+  namespace: real-ip-php
+  annotations:
+    cert-manager.io/cluster-issuer: grepsr-platform-issuer
+    kubernetes.io/ingress.class: kong
+spec:
+  rules:
+  - host: real-ip-php.grepsr.net # Replace with your domain or subdomain
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: real-ip-php
+            port:
+              number: 80

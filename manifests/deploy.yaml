@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: real-ip-php
+  namespace: real-ip-php
+  labels:
+    app: real-ip-php
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: real-ip-php
+  template:
+    metadata:
+      labels:
+        app: real-ip-php
+    spec:
+      containers:
+      - name: real-ip-php
+        image: krishnachalise418/real-ip-php:0.0.1 # Replace with your Docker image (e.g., <your-repo>/php-get-ip:latest)
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
